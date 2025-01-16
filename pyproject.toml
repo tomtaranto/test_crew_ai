@@ -1,0 +1,24 @@
+[project]
+name = "sql_query_crew_formation_and_task_coordination"
+version = "0.1.0"
+description = "sql_query_crew_formation_and_task_coordination using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.86.0,<1.0.0",
+    "embedchain[postgres]>=0.1.126",
+    "psycopg2[binary]>=2.9.10",
+    "rich>=13.9.4",
+    "sqlmodel>=0.0.22",
+]
+
+[project.scripts]
+sql_query_crew_formation_and_task_coordination = "sql_query_crew_formation_and_task_coordination.main:run"
+run_crew = "sql_query_crew_formation_and_task_coordination.main:run"
+train = "sql_query_crew_formation_and_task_coordination.main:train"
+replay = "sql_query_crew_formation_and_task_coordination.main:replay"
+test = "sql_query_crew_formation_and_task_coordination.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

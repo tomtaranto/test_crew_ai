@@ -1,0 +1,25 @@
+---
+create_sql_query_task:
+  description: 'Analyze the user request: {user_request} and the database schema:
+    {database_schema} to craft a precise SQL query that fulfills the user''s needs.'
+  expected_output: An SQL query that correctly reflects the user's request and is
+    compatible with the database schema.
+  async_execution: false
+  agent: query_builder
+execute_sql_query_task:
+  description: 'Execute the provided SQL query: {sql_query} using the appropriate
+    database tool, either MySQL or PostgreSQL, depending on the database type.'
+  expected_output: The raw results from the executed SQL query.
+  async_execution: false
+  agent: query_executor
+  context:
+  - create_sql_query_task
+format_query_output_task:
+  description: 'Take the raw query results: {query_output} and format them into a
+    user-friendly format, such as a table or a report.'
+  expected_output: A formatted report or table that presents the query results in
+    an easily understandable manner.
+  async_execution: false
+  agent: output_formatter
+  context:
+  - execute_sql_query_task
